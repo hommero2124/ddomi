@@ -1,0 +1,60 @@
+{{#if user.sedes.estadoapp}}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        El establecimiento esta Abierto!.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{{else}}
+    <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+        El establecimiento esta Cerrado!.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>    
+{{/if}}
+{{>mensajes}}
+
+<div class="container">
+
+<div class="col-sm-12 mt-2">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Productos</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="row">
+    <h3 class="text-center text-success col-sm-12">Productos</h3>
+{{#each user.productos}}
+    <div class="col-sm-4 mt-4">
+        <div class="card">
+            <img class="card-img-top" src="./img/comida.jpg" alt="Card image cap">
+            <div class="card-heard text-center">
+                {{identificador}}
+            </div>
+            <div class="card-body">
+        
+                <div class="row">
+                    <div class="col-sm-8">
+                        <b>Descripcion: </b><br>{{descripcion}}
+                    </div>
+                    <div class="col-sm-4 ms-auto">
+                        <b>$ {{costo}}</b>
+                    </div>                    
+                    <div class="col-sm-6 mt-3 mx-auto">
+                        <a href="" class="btn btn-success w-100">Ver más</a>
+                    </div>
+                    <div class="col-sm-6 mt-3 text-right">
+                        <a href="" class="btn btn-primary w-100">Agregar</a>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+{{/each}}
+</div>
+</div>      
+        

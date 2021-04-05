@@ -1,0 +1,57 @@
+<div class="container-fluid all colorVerde">
+
+    <div class="container">
+    <div class="row mt-5">
+        <div class="col-sm-12 mt-4 d-none d-sm-none d-md-block" style="margin-top:150px !important;"></div>
+
+        <div class="col-sm-5">
+            <img src="/img/white_mark.png" alt="Domicompras" width="100%">
+        </div>
+
+        <div class="col-sm-1 mt-4 d-none d-sm-none d-md-block text-center">
+            <img src="img/vertical_line.png" alt="Domicompras" title="Domicompras" height="150vh">
+        </div>  
+
+        <div class="col-sm-6 mt-4">      
+        {{> mensajes}}
+            <div class="col-sm-10 mx-auto">
+                <form method="POST" action="/login" autocomplete="off" class="fondo_blanco" style="border-radius: 20px !important;">
+                    
+                    <div class="form-group bg-white">
+                        <input type="text" class="form-control radius-top" required placeholder="Usuario"  name="username" id="username" autofocus>
+                    </div> 
+
+                    <div class="form-group bg-white">
+                        <input type="password" class="form-control radius-bottom" required placeholder="Clave" name="password" id="password" autocomplete="off">
+                    </div>
+
+                    <div class="row bg-white mt-3">
+                        <div class="form-group form-check col-md-6 bg-white text-left mt-2 recordarme">
+                            <label class="customcheck">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recordar
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>                         
+                        </div>
+                        <div class="col-md-6 bg-white">
+                            <button id="iniciar" type="submit" class="btn btn-especial w-100">Iniciar</button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 olvide_contrasena mx-auto text-center">
+                        <a id="forgotlink" href="https://aliado.domicompras.com/aliados/login/forgot">
+                            Olvidé mi contraseña
+                        </a>
+                    </div>                    
+
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+    </div>
+</div>

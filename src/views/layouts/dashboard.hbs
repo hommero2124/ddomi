@@ -1,0 +1,250 @@
+
+<div class="container">
+
+<audio id="audio" style="display: none" controls>
+    <source type="audio/wav" src="./sonidos/caida_prev.mp3">
+</audio>
+<input type="text" id="txtIdUser" value="{{user.idAliado}}" style="display: none">
+<input type="text" id="txtIdId" value="{{user.idId}}" style="display: none">
+
+<div class="col-sm-12 mt-2">
+    <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+    </ol>
+    </nav>
+</div>
+
+<div class="row">
+
+    <h3 class="text-center text-primary m-4">DASHBOARD</h3>
+
+    <div class="col-sm-12 col-md-12">
+      <div class="row" id="divNotifiacion">
+          <!--<img src="/img/aceptar.png" alt="Pedidos por ser aceptados" title="Pedidos por ser aceptados" width="100%"/>-->
+      </div>
+    </div>
+
+    <div class="col-md-3 d-none d-sm-none d-md-block">
+        <div class="" id="CantProductosPendientes"></div>
+        <a href="">
+        <div class="card-counter primary">
+            <i class="fas fa-shopping-basket"></i>
+            <span class="count-numbers">Tus</span>
+            <span class="count-name">Pedidos</span>
+        </div>
+        </a>
+    </div>
+
+    <div class="col-md-3 d-none d-sm-none d-md-block">
+        <a href="/productos">
+        <div class="card-counter danger">
+            <i class="fas fa-utensils"></i>
+            <span class="count-numbers">Tus</span>
+            <span class="count-name">Productos</span>
+        </div>
+        </a>
+    </div>
+
+    <div class="col-md-3 d-none d-sm-none d-md-block">
+      <div class="card-counter success" onclick="">
+        <i class="fas fa-map-marked-alt"></i>
+        <span class="count-numbers">Tus</span>
+        <span class="count-name">Sedes</span>
+      </div>
+    </div>
+
+    <div class="col-md-3 d-none d-sm-none d-md-block">
+        <a href="/perfil">
+        <div class="card-counter info">
+            <i class="far fa-address-card"></i>
+            <span class="count-numbers">Tu</span>
+            <span class="count-name">Información</span>
+        </div>
+        </a>
+    </div>
+
+  <div class="col-sm-12 mt-5">
+  <div class="row">
+
+    <h3 class="text-center text-primary col-sm-12 mb-4">Estado de pedidos</h3>
+
+
+  <div class="col-xl-8 col-lg-8 col-12">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">En preparación</h6>
+          <div class="dropdown no-arrow">
+            <a href="#">
+              <i class="fas fa-search-plus fa-sm fa-fw text-primary"></i>
+            </a>
+            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-ellipsis-v fa-sm fa-fw text-primary"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+              <div class="dropdown-header">Opciones:</div>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Recargar</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+          <div class="text-center" id="divPreparacion">
+              <img src="/img/preparacion.png" alt="Los pedidos se estan preparando" title="Los pedidos se estan preparando" width="150px"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="col-xl-4 col-lg-4">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-success">Entregados</h6>
+          <div class="dropdown no-arrow">
+            <a href="#">
+              <i class="fas fa-search-plus fa-sm fa-fw text-success"></i>
+            </a>            
+            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-ellipsis-v fa-sm fa-fw text-success"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+              <div class="dropdown-header">Opciones:</div>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Recargar</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+          <div class="text-center" id="DivEntregados">
+            <img src="/img/entregados.png" alt="Pedidos entregados" title="Pedidos entregados" width="150px"/>
+          </div>
+        </div>
+      </div>
+    </div>        
+    
+    <!-- https://blog.pagesd.info/2019/10/08/crud-with-express-sqlite-10-steps/ (ejercio practico con sqli3)-->
+
+  </div>
+  </div>
+
+</div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modl-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Modal Header</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      {{!-- <div class="modal-footer" id="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div> --}}
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal2 -->
+<div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog modl-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-title2" style="color:#AAD500">Modal Header</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body2">
+        <p>Some text in the modal.</p>
+      </div>
+      {{!-- <div class="modal-footer" id="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div> --}}
+    </div>
+
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/main.js"></script>
+
+<script>
+const PUBLICKEY='BOltP0VcjC9JykKWWQB3TyfExelWrrGw5oA3ePKcBO_Nj-3ZVDwbxScuyDTXXGul2P-uh0T6qIFyIGJuYvkmIYY';
+
+function urlBase64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding)
+      .replace(/-/g, '+')
+      .replace(/_/g, '/');
+   
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+   
+    for (let i = 0; i < rawData.length; ++i) {
+      outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
+  }
+
+/*Notification.requestPermission().then(function(result) 
+{  
+    if(result=='denied'){
+        alert('Notificaciones denegadas o falta de Https://')
+      Notification.requestPermission();
+    }else if(result=='granted'){
+      suscripcion()
+    }
+});*/
+
+async function suscripcion(){
+    if ('serviceWorker' in navigator) 
+    {
+        const usuarioId= document.getElementById('txtIdUser');
+    /*const registro = await navigator.serviceWorker.register('/sw.js',{
+        scope: 'https://domicompras.herokuapp.com/'
+    });*/
+
+     const registro = await navigator.serviceWorker.register('/sw.js',{
+        scope: '/'
+    });
+
+    if(registro.installing) {
+        console.log('Service worker installing');
+    } else if(registro.waiting) {
+        console.log('Service worker installed');
+        window.location.reload();
+    } else if(registro.active) {
+        //console.log('Service worker active');
+        const subscirpcion= await registro.pushManager.subscribe({
+        userVisibleOnly:true,
+        applicationServerKey: urlBase64ToUint8Array(PUBLICKEY)
+        });
+        //console.log(subscirpcion);
+
+        await fetch('/suscripcion',{
+            method:'POST',
+            body:JSON.stringify({
+                subscirpcion:subscirpcion,
+                usuarioId:usuarioId.value
+            }),
+            headers:{
+                "content-Type":"application/json"
+            }
+        });
+        //console.log(subscirpcion)
+    }
+    }
+}
+
+</script>

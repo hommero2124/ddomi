@@ -1,0 +1,107 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+
+<div class="container">
+<div class="col-sm-12 mt-2">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Dashboard">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Perfil</li>
+        </ol>
+    </nav>
+</div>
+<div class="row">
+
+    <div class="col-sm-6 card" id="map">
+        
+    </div>
+    <div class="col-sm-6 card-head">
+        {{#each user.sedes}}
+        <span><b>Nombre: </b>{{nom_sede}}</span><br>
+        <span><b>Dirección: </b>{{dir}}</span><br>
+        <span><b>Telefono: </b>{{tel1}}</span><br>
+        {{/each}}
+    <div class="card-body">
+        <div class="row">
+            <h4 class="col-sm-12 text-center text-success">Horarios de Atención</h4>
+            {{#each user.sedes}}
+                <div class="card col-sm-12">
+                    <div class=" form-inline p-2">
+                        Lunes: {{horario_lunes}} 
+                        <i class="far fa-check-circle text-success derecha"></i>
+                    </div>
+                </div>
+                <div class="card col-sm-12">
+                    <div class=" form-inline p-2">
+                        Martes: {{horario_martes}}
+                        <i class="far fa-check-circle text-success derecha"></i>
+                    </div>                    
+                </div>
+                <div class="card col-sm-12">
+                    <div class=" form-inline p-2">
+                        Miercoles: {{horario_miercoles}}
+                        <i class="far fa-check-circle text-success derecha"></i>
+                    </div>
+                </div>
+                <div class="card col-sm-12">
+                    <div class=" form-inline p-2">
+                        Jueves: {{horario_jueves}}
+                        <i class="far fa-check-circle text-success derecha"></i>
+                    </div>
+                </div>      
+                <div class="card col-sm-12">
+                    <div class=" form-inline p-2">
+                        Viernes: {{horario_viernes}}
+                        <i class="far fa-check-circle text-success derecha"></i>
+                    </div>
+                </div>   
+                <div class="card col-sm-12">
+                    <div class=" form-inline p-2">
+                        Sabado: {{horario_sabado}}
+                        <i class="far fa-check-circle text-success derecha"></i>
+                    </div>                    
+                </div>  
+                <div class="card col-sm-12">
+                    <div class=" form-inline p-2">
+                        Domingo: {{horario_domingo}}
+                        <i class="far fa-check-circle text-success derecha"></i>
+                    </div>                        
+                </div>  
+                <div class="card col-sm-12">
+                    <div class=" form-inline p-2">
+                        Festivo: {{horario_festivo}}
+                        <i class="far fa-times-circle text-danger derecha"></i>
+                    </div>
+                </div> 
+            {{/each}}                                                                      
+        </div>
+    </div>         
+    </div>
+   
+
+</div>
+</div>
+    {{#each user.sedes}}
+         <input type="text" id="txt_nombre" value="{{nom_sede}}" hidden="fale">  
+         <input type="text" id="txt_lati" value="{{lati}}" hidden="fale">  
+         <input type="text" id="txt_longi" value="{{longi}}" hidden="fale">  
+    {{/each}}
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script>
+     
+     const nombre = document.getElementById('txt_nombre')
+     const lati = document.getElementById('txt_lati')
+     const longi = document.getElementById('txt_longi')
+     //console.log(lati.value)
+     //console.log(longi.value)
+    
+    var map = L.map('map').setView([lati.value, longi.value], 17);
+    //var map = L.map('map').setView([6.250074,-75.6063023], 17);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([lati.value, longi.value]).addTo(map)
+        .bindPopup(nombre.value)
+        .openPopup();
+</script>
